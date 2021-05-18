@@ -44,4 +44,3 @@ if __name__ == "__main__":
     relPath = str(Path(__file__).parent) + "/"
     core = Core(TableList(), WaitorList())
     test(core)
-    print("start")
