@@ -1,0 +1,98 @@
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+INFO:root:Store Waitor List...
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+INFO:root:Store Waitor List...
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+INFO:root:Store Waitor List...
+INFO:root:Store Table List...
+INFO:root:Stopping server...
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+INFO:root:Store Waitor List...
+INFO:root:Store Table List...
+DEBUG:root:Init TableList
+DEBUG:root:Init TableList
+DEBUG:root:Init WaitorList
+DEBUG:root:Init ActionList
+INFO:root:Add action with ID: 1, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 2, description: bestellen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 3, description: bezahlen and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 4, description: frage and table (ID: 1, number: 4)
+INFO:root:Add action with ID: 5, description: bestellen and table (ID: 2, number: 7)
+INFO:root:Add action with ID: 6, description: bestellen and table (ID: 3, number: 1)
+INFO:root:Add action with ID: 7, description: bestellen and table (ID: 4, number: 8)
+INFO:root:Add action with ID: 8, description: bestellen and table (ID: 1, number: 4)
+CRITICAL:root:Action was posted from a table with an ID which is not created or not registered!
+INFO:root:Store Waitor List...
+INFO:root:Store Table List...
+INFO:root:Waiting for completion of all tasks...

@@ -1,3 +1,16 @@
 {
-
+    "0": {
+        "active_orders": [],
+        "id": 0,
+        "is_available": false,
+        "password": "123456",
+        "user_name": "Jakob"
+    },
+    "1": {
+        "active_orders": [],
+        "id": 1,
+        "is_available": false,
+        "password": "789",
+        "user_name": "Dave"
+    }
 }

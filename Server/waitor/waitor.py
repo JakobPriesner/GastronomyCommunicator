@@ -5,6 +5,7 @@ from pathlib import Path
 
 class WaitorList:
     def __init__(self):
+        logging.debug('Init WaitorList')
         self.stored_waitor = {}
         self.waitor_list = []
         self.waitor_anz = 0
@@ -23,12 +24,34 @@ class WaitorList:
             if user_name == self.stored_waitor[waitor_id]["user_name"] \
                     and password == self.stored_waitor[waitor_id]["password"]:
                 # waitor entered valid access data
-                self.waitor_list.append(Waitor(waitor_id, user_name, password))
+                temp_waitor = Waitor(waitor_id, user_name, password, is_working=True)
+                self.waitor_list.append(temp_waitor)
+
             self.waitor_anz += 1
+
+    def log_out(self, waitor_id):
+        # Deletes the waiter from the list of active waiters and returns his pending orders so that they can
+        # be redistributed
+        waitor = self.get_waitor_by_id(waitor_id)
+        waitor.is_working = False
+        self.waitor_list.remove(waitor)
+        self.waitor_anz -= 1
+        return waitor.active_orders
 
     def register_waitor(self, waitor_id, user_name, user_password):
         # adds a waiter who is not yet registered in the system
         self.stored_waitor[waitor_id] = {"user_name": user_name, "password": user_password}
+
+    def store_waitor_list(self):
+        # prepare waiter (deletes all data that is no longer relevant)
+        for waitor in self.waitor_list:
+            waitor.active_orders = []
+            waitor.is_available = False
+            waitor.is_working = False
+            waitor.connection = None
+
+        with open(relPath + 'waitor_list.json', 'w') as file:
+            json.dump(self.get_waitor_list_in_json(), file, indent=4, sort_keys=True)
 
     def get_waitor_by_id(self, waitor_id):
         # returns the object of a waiter by its ID
@@ -45,23 +68,15 @@ class WaitorList:
             temp[waitor.id] = waitor.get_waitor_in_json()
         return temp
 
-    def log_out(self, waitor_id):
-        # Deletes the waiter from the list of active waiters and returns his pending orders so that they can
-        # be redistributed
-        waitor = self.get_waitor_by_id(waitor_id)
-        self.waitor_list.remove(waitor)
-        self.waitor_anz -= 1
-        return waitor.active_orders
-
     def to_string(self):
         return '----WAITOR-LIST----\n' + json.dumps(self.get_waitor_list_in_json(), indent=4, sort_keys=True)
 
 
 class Waitor:
-    def __init__(self, waitor_id, user_name, user_password):
+    def __init__(self, waitor_id, user_name, user_password, is_working=False):
         self.id = waitor_id
         self.is_available = False  # means, if the waitor is working or in the toilet, ...
-        self.is_working = False
+        self.is_working = is_working
         self.active_orders = []
         self.user_name = user_name
         self.password = user_password
@@ -72,15 +87,21 @@ class Waitor:
             if action["id"] == waitor_id:
                 self.active_orders.remove(action)
 
-    def get_action(self):
-        pass
-
     def send_action(self):
         pass
 
     def get_waitor_in_json(self):
         return {"id": self.id, "is_available": self.is_available, "active_orders": self.active_orders,
                 "user_name": self.user_name, "password": self.password}
+
+    def to_string(self):
+        output = f'\nID {self.id}: {self.user_name}\n'
+        output += 'is working\n' if self.is_working else 'doesn´t work\n'
+        for order in self.active_orders:
+            output += '     ' + order.to_string() + '\n'
+        output += '\n-----------------'
+
+        return output
 
 
 relPath = str(Path(__file__).parent) + '/'
