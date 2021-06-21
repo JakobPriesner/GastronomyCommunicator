@@ -1,5 +1,25 @@
 {
     "1": {
+        "id": "1",
+        "table_number": 4,
+        "actions": []
+    },
+    "2": {
+        "id": "2",
+        "table_number": 7,
+        "actions": []
+    },
+    "3": {
+        "id": "3",
+        "table_number": 1,
+        "actions": []
+    },
+    "4": {
+        "id": "4",
+        "table_number": 8,
+        "actions": []
+    },
+    "1": {
         "id": 1,
         "table_number": 4,
         "actions": []

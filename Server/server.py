@@ -5,6 +5,9 @@ from pathlib import Path
 from waitor.waitor import WaitorList
 from table.table import TableList
 from action.action import ActionList
+import web_server
+
+import web_server
 
 
 class Core:
@@ -14,6 +17,7 @@ class Core:
         self.action_list = action_list
 
     def assign_action(self, action_description, table_id):
+        print("assign action in server")
         # toDo: check if the table has already sent this task and if necessary only increase the counter of the task
         occupancy_list = []
         for waitor in self.waitor_list.waitor_list:
@@ -28,11 +32,21 @@ class Core:
 
             # give the action to the waiter who is least busy
             self.waitor_list.get_waitor_by_id(occupancy_list[0][0]).active_orders.append(action)
+            logging.info(f'Assigned Action with ID "{action.id}" and description "{action.action}" from table with ID {action.table.id} to the Waitor with the ID {occupancy_list[0][0]}')
         else:
-            logging.critical('Action was posted from a table with an ID which is not created or not registered!')
+            logging.critical('Action was posted from a table with an ID, which is not created or not registered!')
 
-    def get_action(self):
-        pass
+    def complete_action(self, order_id):
+        return self.action_list.complete_action(order_id)
+
+    def get_action(self, action_id):
+        if action_id == '*':
+            actions = {}
+            for action in self.action_list.actions:
+                actions[action.id] = action.get_action_in_json()
+            return actions
+        else:
+            return self.action_list.get_action_by_id(action_id).get_action_in_json()
 
     def add_table(self):
         pass
@@ -63,7 +77,7 @@ def test(core):
     core.waitor_list.register_waitor(1, "Dave", "789")
     core.waitor_list.log_in(0, "Jakob", "123456")
     core.waitor_list.log_in(1, "Dave", "789")
-
+    """
     core.assign_action("bestellen", 1)
     core.assign_action("bestellen", 1)
     core.assign_action("bezahlen", 1)
@@ -73,11 +87,14 @@ def test(core):
     core.assign_action("bestellen", 4)
     core.assign_action("bestellen", 1)
     core.assign_action("frage", 5)
+        """
+    for item in core.action_list.actions:
+        print(item.to_string())
 
     for waitor in core.waitor_list.waitor_list:
         print(waitor.to_string())
 
-    core.close()
+    # core.close()
 
 
 def prepare_log():
@@ -98,3 +115,5 @@ if __name__ == "__main__":
     prepare_log()
     core = Core(TableList(), WaitorList(), ActionList())
     test(core)
+    web_server = web_server.webapp(core)
+

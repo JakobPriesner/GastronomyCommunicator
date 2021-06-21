@@ -16,11 +16,23 @@ class ActionList:
         return temp_action
 
     def complete_action(self, action_id):
+        if type(action_id) == type('String'):
+            try:
+                action_id = int(action_id)
+            except:
+                logging.warning('Session tried to query an id and passed an invalid parameter!')
+                return False
         temp_action = self.get_action_by_id(action_id)
         self.actions.remove(temp_action)
         self.completed_actions.append(temp_action)
 
     def get_action_by_id(self, action_id):
+        if type(action_id) == type('String'):
+            try:
+                action_id = int(action_id)
+            except:
+                logging.warning('Session tried to query an id and passed an invalid parameter!')
+                return False
         for action in self.actions:
             if action.id == action_id:
                 return action
@@ -37,7 +49,7 @@ class Action:
         self.number_of_requests = 1
 
     def get_action_in_json(self):
-        return {"id": self.id, "action": self.action, "table": self.table, "is_done": self.is_done,
+        return {"id": self.id, "action": self.action, "table": {"id": self.table.id, "number": self.table.number}, "is_done": self.is_done,
                 "number_of_requests": self.number_of_requests}
 
     def to_string(self):
