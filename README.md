@@ -3,7 +3,7 @@ A communicator for catering establishments, where customers can call for service
 
 For starting, you have to start the server.py
 
-After that, API calls can be made via the IP of the device on which the server was started.
+After that, API calls can be made via the IP of the device on which the server was started with Port 50500.
 
 <h1>GET</h1>
 
