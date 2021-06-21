@@ -17,3 +17,6 @@ After that, API calls can be made via the IP of the device on which the server w
     _action_: either "addAction" or "completeAction", as the case may be <br />
         - _addAction_: expects a JSON format with the information "description" and "table_id". <br />
         - _completeAction_: expects a JSON format with the information "action_id".
+
+<br /><br /><br /><br />
+--> In the package client are sample clients for testing purposes
