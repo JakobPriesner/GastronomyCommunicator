@@ -17,17 +17,17 @@ class WaitorList:
             for waitor in stored_waitor_list.keys():
                 self.stored_waitor[waitor] = stored_waitor_list[waitor]
 
-    def log_in(self, waitor_id, user_name, password):
+    def log_in(self, user_name, password):
         # already registered waiter logged in to work
-        if self.stored_waitor.get(waitor_id):
-            # waitor is registered
-            if user_name == self.stored_waitor[waitor_id]["user_name"] \
-                    and password == self.stored_waitor[waitor_id]["password"]:
+        for waitor in self.stored_waitor:
+            if user_name == self.stored_waitor[waitor]["user_name"] \
+                    and password == self.stored_waitor[waitor]["password"]:
                 # waitor entered valid access data
-                temp_waitor = Waitor(waitor_id, user_name, password, is_working=True)
+                temp_waitor = Waitor(waitor, user_name, password, is_working=True)
                 self.waitor_list.append(temp_waitor)
-
-            self.waitor_anz += 1
+                self.waitor_anz += 1
+                return 'ok'
+        return 'err'
 
     def log_out(self, waitor_id):
         # Deletes the waiter from the list of active waiters and returns his pending orders so that they can
@@ -54,12 +54,20 @@ class WaitorList:
             json.dump(self.get_waitor_list_in_json(), file, indent=4, sort_keys=True)
 
     def get_waitor_by_id(self, waitor_id):
-        # returns the object of a waiter by its ID
+        # returns the object of a waiter by his ID
         for waitor in self.waitor_list:
             if waitor.id == waitor_id:
                 return waitor
         # otherwise the waiter does not exist in the system
         logging.warning(f'Waitor with ID {waitor_id} not found!')
+
+    def get_waitor_by_name(self, user_name):
+        # return the object of a waitor by his name
+        for waitor in self.waitor_list:
+            if waitor.user_name == user_name:
+                return waitor
+        # otherwise the waiter does not exist in the system
+        logging.warning(f'Waitor with UserName {user_name} not found!')
 
     def get_waitor_list_in_json(self):
         # returns the data of a waiter in json format

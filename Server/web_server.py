@@ -11,10 +11,18 @@ def webapp(core):
         data.update(request.form.to_dict())
         return data
 
+    @web_app.route("/login")
+    def login():
+        data = get_data()
+        return core.log_in(data["user_name"], data["password"])
+
     @web_app.route("/api/GET/<action>/<inf>", methods=['GET'])
     def get_action(action, inf):
         if action == 'action':
             action = core.get_action(inf)
+            return jsonify(action)
+        if action == 'waitor':
+            action = core.get_waitor(inf)
             return jsonify(action)
 
     @web_app.route("/api/POST/<action>", methods=['POST'])

@@ -7,8 +7,6 @@ from table.table import TableList
 from action.action import ActionList
 import web_server
 
-import web_server
-
 
 class Core:
     def __init__(self, table_list, waitor_list, action_list):
@@ -39,6 +37,9 @@ class Core:
     def complete_action(self, order_id):
         return self.action_list.complete_action(order_id)
 
+    def log_in(self, user_name, password):
+        return self.waitor_list.log_in(user_name, password)
+
     def get_action(self, action_id):
         if action_id == '*':
             actions = {}
@@ -47,6 +48,15 @@ class Core:
             return actions
         else:
             return self.action_list.get_action_by_id(action_id).get_action_in_json()
+
+    def get_waitor(self, waitor_id):
+        if waitor_id == '*':
+            waitors = {}
+            for waitor in self.waitor_list.waitor_list:
+                waitors[waitor.id] = waitor.get_waitor_in_json()
+            return waitors
+        else:
+            return self.waitor_list.get_waitor_by_id(waitor_id).get_waitor_in_json()
 
     def add_table(self):
         pass
@@ -75,19 +85,19 @@ def test(core):
 
     core.waitor_list.register_waitor(0, "Jakob", "123456")
     core.waitor_list.register_waitor(1, "Dave", "789")
-    core.waitor_list.log_in(0, "Jakob", "123456")
-    core.waitor_list.log_in(1, "Dave", "789")
-    """
-    core.assign_action("bestellen", 1)
-    core.assign_action("bestellen", 1)
-    core.assign_action("bezahlen", 1)
-    core.assign_action("frage", 1)
-    core.assign_action("bestellen", 2)
-    core.assign_action("bestellen", 3)
-    core.assign_action("bestellen", 4)
-    core.assign_action("bestellen", 1)
-    core.assign_action("frage", 5)
-        """
+    core.waitor_list.log_in("Jakob", "123456")
+    core.waitor_list.log_in("Dave", "789")
+
+    core.assign_action("pay", 1)
+    core.assign_action("pay", 1)
+    core.assign_action("pay", 1)
+    core.assign_action("question", 1)
+    core.assign_action("order", 2)
+    core.assign_action("order", 3)
+    core.assign_action("order", 4)
+    core.assign_action("order", 1)
+    core.assign_action("question", 5)
+
     for item in core.action_list.actions:
         print(item.to_string())
 
